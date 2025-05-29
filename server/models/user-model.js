@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const bcrypt = require("bcrypt");
+const bcryptjs = require("bcryptjs");
 const jwt=require("jsonwebtoken");
 
 const userSchema = new mongoose.Schema({
@@ -34,7 +34,7 @@ userSchema.pre("save", async function (next) {
 
   try {
     const saltRound = 10;
-    const hash_password = await bcrypt.hash(user.password, saltRound);
+    const hash_password = await bcryptjs.hash(user.password, saltRound);
     user.password = hash_password;
     next();
   } catch (error) {
@@ -44,7 +44,7 @@ userSchema.pre("save", async function (next) {
 
 
 userSchema.methods.comparePassword = async function(password){
-  return bcrypt.compare(password ,this.password);
+  return bcryptjs.compare(password ,this.password);
 };
 
 

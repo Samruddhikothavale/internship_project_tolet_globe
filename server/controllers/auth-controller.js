@@ -1,5 +1,5 @@
 const User = require("../models/user-model");
-const bcrypt = require("bcrypt");
+const bcryptjs = require("bcryptjs");
 
 const home = async (req,res) => {
     try {
@@ -35,7 +35,7 @@ const login = async (req,res) => {
         if (!userExist) {
             return res.status(400).json({ msg: "Invali credential" });
         }
-        //const user = await bcrypt.compare(password ,userExist.password);
+        //const user = await bcryptjs.compare(password ,userExist.password);
         const user = await userExist.comparePassword(password);
         if(user){
             res.status(200).json({ msg: "login successfully", token: await userExist.generateToken() , userID:userExist._id.toString(),});
