@@ -23,7 +23,7 @@ export const Register =()=>{
         e.preventDefault();
         console.log(user);
         try {
-        const response = await fetch(`${import.meta.env.BASE_URL}/auth/register` ,{
+        const response = await fetch(`${import.meta.env.VITE_BASE_API}/auth/register` ,{
             method:"POST",
             headers:{
                 'Content-Type':"application/json"

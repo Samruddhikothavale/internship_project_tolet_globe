@@ -25,7 +25,7 @@ export const Login = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await fetch(`${import.meta.env.BASE_URL}/auth/login`, {
+            const response = await fetch(`${import.meta.env.VITE_BASE_API}/auth/login`, {
                 method: "POST",
                 headers: {
                     'Content-Type': "application/json"
