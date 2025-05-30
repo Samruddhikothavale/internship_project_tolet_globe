@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { useNavigate } from "react-router-dom";
 import registerImg from '../assets/images (1).png';
 
 export const Register =()=>{
@@ -8,7 +9,7 @@ export const Register =()=>{
         phone:"",
         password:""
     });
-
+    const navigate =useNavigate();
     const handleInput=(e) =>{
         let name=e.target.name;
         let value=e.target.value;
@@ -31,6 +32,8 @@ export const Register =()=>{
             body:JSON.stringify(user)
         })
         if(response.ok){
+            alert("registeration sucssesful !")
+            navigate("/login");
             setUser({username:"",
         email:"",
         phone:"",
