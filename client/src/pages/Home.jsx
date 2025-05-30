@@ -19,7 +19,7 @@ export const Home = () => {
             </div>
 
             <div className="hero-image">
-              <img src="C:\Users\Samruddhi\Documents\MERN-web\client\src\assets\ChatGPT Image Apr 13, 2025, 03_01_35 PM.png" alt="hero" width="500"height="500" />
+              <img src="" alt="hero" width="500"height="500" />
             </div>
           </div>
         </section>
@@ -28,7 +28,7 @@ export const Home = () => {
         <section className="section-analytics">
           <div className="container grid grid-two-cols">
             <div className="hero-image">
-              <img src="C:\Users\Samruddhi\Documents\MERN-web\client\src\assets\ChatGPT Image Apr 13, 2025, 03_01_35 PM.png" alt="hero" width="500"height="500" />
+              <img src="" alt="hero" width="500"height="500" />
             </div>
             <div className="hero-content">
               <h1>Get Started</h1>
