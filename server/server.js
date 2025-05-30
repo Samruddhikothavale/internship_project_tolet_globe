@@ -6,6 +6,7 @@ const authRouter =require("./router/auth-router");
 const contactRouter =require("./router/contact-router");
 const connectdb = require("./utils/db");
 const errormiddleware = require("./middelware/errorhandler_middelware");
+const path = require("path");
 
 
 var corsOptions = {
@@ -20,6 +21,12 @@ app.use(express.json());
 
 app.use("/api/auth" , authRouter);
 app.use("/api/form" , contactRouter);
+
+app.use(express.static(path.join(__dirname, "client/build")));
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "client/build", "index.html"));
+});
 
 // app.get("/",(req,res)=>{
 //     res.status(200).send('Welcome to pet shop');
