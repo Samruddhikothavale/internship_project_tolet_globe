@@ -19,7 +19,9 @@ var corsOptions = {
 app.use(cors(corsOptions));
 app.use(express.json());
 
-
+app.get("/", (req, res) => {
+  res.send("Welcome to the ToLet Globe API!");
+});
 app.use("/api/auth" , authRouter);
 app.use("/api/form" , contactRouter);
 

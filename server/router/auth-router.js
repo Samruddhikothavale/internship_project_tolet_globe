@@ -7,9 +7,7 @@ const signUpSchema = require("../validators/auth_validate");
 
 
 
-app.get("/", (req, res) => {
-  res.send("Welcome to the ToLet Globe API!");
-});
+
 router.route("/").get(authcontrollers.home);
 
 router.route("/register").post(validate(signUpSchema),authcontrollers.register);
