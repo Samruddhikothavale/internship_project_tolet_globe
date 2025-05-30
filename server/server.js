@@ -7,11 +7,15 @@ const contactRouter =require("./router/contact-router");
 const connectdb = require("./utils/db");
 const errormiddleware = require("./middelware/errorhandler_middelware");
 
-const CLIENT_URL = process.env.CLIENT_URL;
+//const CLIENT_URL = process.env.CLIENT_URL;
 
 
 var corsOptions = {
-  origin: CLIENT_URL,
+  origin: [
+    "http://localhost:5173", 
+    "https://internship-project-tolet-globe.vercel.app",
+    "https://internship-project-tolet-globe-cfc644oyx.vercel.app"
+  ],
   methods:"GET, POST , PUT , DELETE , HEAD ",
   credential:true,
   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
