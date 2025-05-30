@@ -7,10 +7,9 @@ const signUpSchema = require("../validators/auth_validate");
 
 
 
-// router.get("/",(req,res)=>{
-//     res.status(200).send('Welcome to pet shop by router');
-// });
-
+app.get("/", (req, res) => {
+  res.send("Welcome to the ToLet Globe API!");
+});
 router.route("/").get(authcontrollers.home);
 
 router.route("/register").post(validate(signUpSchema),authcontrollers.register);
