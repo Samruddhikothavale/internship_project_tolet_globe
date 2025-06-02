@@ -1,0 +1,12 @@
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.footer{
+    padding: 10px;
+    text-align: center;
+    margin: 5px;
+    
+}

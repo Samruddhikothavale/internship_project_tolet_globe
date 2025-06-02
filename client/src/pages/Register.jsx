@@ -50,6 +50,7 @@ export const Register = () => {
         } catch (error) {
             console.log("Register :", error)
             alert("Something went wrong. Please try again later.");
+            
         }
 
     }

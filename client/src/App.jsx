@@ -7,6 +7,7 @@ import { Login } from "./pages/Login";
 import { Register } from "./pages/Register";
 import { Navbar } from "./components/Navbar";
 import { Error } from "./pages/Error";
+import { Footer } from "./components/Footer"
 
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="*" element={<Error/>}/>
       </Routes>
+      <Footer/>
     </BrowserRouter>
   </>;
 }
