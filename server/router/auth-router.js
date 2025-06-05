@@ -11,6 +11,7 @@ const signUpSchema = require("../validators/auth_validate");
 router.route("/").get(authcontrollers.home);
 
 router.route("/register").post(validate(signUpSchema),authcontrollers.register);
+router.get("/users/verify/:token", authcontrollers.verifyEmail);
 router.route("/login").post(authcontrollers.login);
 
 

@@ -2,14 +2,16 @@ import { useState } from "react"
 import { useNavigate } from "react-router-dom";
 import registerImg from '../assets/images (1).png';
 
+
 export const Register = () => {
+    
     const [user, setUser] = useState({
         username: "",
         email: "",
         phone: "",
         password: ""
     });
-    const navigate = useNavigate();
+    const [loading, setLoading] = useState(false);
     const handleInput = (e) => {
         let name = e.target.name;
         let value = e.target.value;
@@ -22,6 +24,8 @@ export const Register = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setLoading(true);
+       
         console.log(user);
         try {
             const response = await fetch(`${import.meta.env.VITE_BASE_API}/auth/register`, {
@@ -32,33 +36,36 @@ export const Register = () => {
                 body: JSON.stringify(user)
             })
             const data = await response.json();
-            if (response.ok) {
-                alert("registeration sucssesful !")
-                navigate("/login");
+            if (response.status === 400 && data.msg === "Email already exists") {
+                alert("This email is already registered. Please use another.");
+            } else if (response.ok) {
+                alert("Registered successfull...Please verify email to login !");
                 setUser({
                     username: "",
                     email: "",
                     phone: "",
                     password: ""
                 })
-            } else if (response.status === 400 && data.msg === "Email already exists") {
-                alert("This email is already registered. Please use another.");
+                setLoading(false);
             } else {
+                setLoading(false);
                 alert(data.msg || "Registration failed.");
             }
             //console.log(response);
         } catch (error) {
+            setLoading(false);
             console.log("Register :", error)
             alert("Something went wrong. Please try again later.");
-            
-        }
 
+        }
+        setLoading(false);
     }
 
 
 
     return <>
         <section>
+
             <div className="section-register">
                 <div className="container grid grid-two-cols">
                     <div className="register-img">
@@ -66,6 +73,11 @@ export const Register = () => {
                     </div>
                     <div className="register-form">
                         <h1>Register Form</h1><br />
+                        {loading && (
+                            <p style={{ color: "white", fontWeight: "bold" }}>
+                                Registering...Please verify your email to complete registration.
+                            </p>
+                        )}
                         <form onSubmit={handleSubmit}>
                             <div>
                                 <label htmlFor="username">username</label>

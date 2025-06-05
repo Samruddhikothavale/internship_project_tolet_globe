@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import loginImg from '../assets/images.png'; 
+import React, { useState, useEffect } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
+import loginImg from '../assets/images.png';
 
 
 export const Login = () => {
@@ -9,8 +9,15 @@ export const Login = () => {
         email: "",
         password: ""
     });
+    const location = useLocation();
+  useEffect(() => {
+  const params = new URLSearchParams(location.search);
+  if (params.get("verified") === "true") {
+    alert("Email verified! Please log in.");
+  }
+}, []);
 
-    const navigate =useNavigate();
+    const navigate = useNavigate();
 
     const handleInput = (e) => {
         let name = e.target.name;
@@ -54,8 +61,8 @@ export const Login = () => {
             <div className="section-register">
                 <div className="container grid grid-two-cols">
                     <div className="register-img">
-                        <img src={loginImg} alt="" width={500} height={500}/>
-                        
+                        <img src={loginImg} alt="" width={500} height={500} />
+
                     </div>
                     <div className="register-form">
                         <h1 >Login Form</h1><br />
