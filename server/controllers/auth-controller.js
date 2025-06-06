@@ -17,44 +17,46 @@ const home = async (req, res) => {
 
 
 const register = async (req, res) => {
-    try {
-        console.log(req.body);
-        const { username, email, phone, password } = req.body;
+  try {
+    const { username, email, phone, password, role, userType } = req.body;
+    console.log(req.body);
 
-        const userExist = await User.findOne({ email });
-        if (userExist) {
-            return res.status(400).json({ msg: "Email already exists" });
-        }
-
-        const token = jwt.sign({ username, email, phone, password }, process.env.JWT_KEY, { expiresIn: "10m" });
-        const user = new User({
-            username,
-            email,
-            phone,
-            password,
-            isAdmin: false,
-            isVerified: false,
-        });
-
-        await user.save();
-
-        try {
-            await sendEmail(email, token);
-            return res.status(200).json({ message: "Verification email sent!" });
-        } catch (err) {
-            console.error("Email send failed:", err.message);
-
-            return res.status(201).json({
-                message: "Failed to send verification email. Please try again.",
-            });
-        }
-
-
-    } catch (error) {
-        console.error("Register error:", error);
-        res.status(500).json({ msg: "Registration failed" });
+    const userExist = await User.findOne({ email });
+    if (userExist) {
+      return res.status(400).json({ msg: "Email already exists" });
     }
+
+    const token = jwt.sign({ username, email, phone, password, role, userType }, process.env.JWT_KEY, { expiresIn: "10m" });
+
+    const newUser = new User({
+      username,
+      email,
+      phone,
+      password,
+      role,
+      userType: role === "user" ? userType : "",
+      isAdmin: role === "admin", 
+      isVerified: false,
+    });
+
+    await newUser.save();
+
+    try {
+      await sendEmail(email, token);
+      return res.status(200).json({ message: "Verification email sent!" });
+    } catch (err) {
+      console.error("Email send failed:", err.message);
+      return res.status(201).json({
+        message: "Failed to send verification email. Please try again.",
+      });
+    }
+
+  } catch (error) {
+    console.error("Register error:", error);
+    res.status(500).json({ msg: "Registration failed" });
+  }
 };
+
 
 
 

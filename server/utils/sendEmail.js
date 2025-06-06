@@ -18,7 +18,7 @@ const sendEmail = async (email , token) => {
       subject:"test",
       html: `<h2>Welcome to Our App </h2>
       <p>Please verify your email </p>
-      <a href="${verificationUrl}" target="_blank" style="color:blue;">Verify Email</a>
+      <a href="${token}" target="_blank" style="color:blue;">Verify Email</a>
       <p>This link will expire in 10 minutes.</p>`,
     };
 

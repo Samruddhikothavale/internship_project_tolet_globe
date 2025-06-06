@@ -42,7 +42,7 @@ export const Login = () => {
             if (response.ok) {
                 setUser({
                     email: "",
-                    password: ""
+                    password: "",
                 })
                 alert("Login Successful")
                 navigate("/");
