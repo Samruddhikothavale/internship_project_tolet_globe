@@ -1,0 +1,25 @@
+[33mc0aa4df[m[33m ([m[1;31morigin/main[m[33m)[m Update .env
+[33meaafe65[m Remove .env file and add to .gitignore
+[33m0dca285[m email varification code
+[33m1fd8cf5[m contact code updated
+[33meb2619c[m added user exist code
+[33md6dba21[m added origin
+[33me9457a4[m added reroutes
+[33me006d7a[m added VITE
+[33m4552d4c[m added VITE
+[33m2047654[m removed local image addres
+[33m1e4e4ef[m added base url for backend
+[33m5b0ef68[m added base url for backend
+[33m36e729d[m changed url for client base
+[33m77a8cd2[m changed url for client
+[33m92e85d6[m changed root dir address
+[33m471b411[m fixed route error
+[33m0e16118[m build createrd
+[33ma38afbd[m updated to bcrypt to bcryptjs
+[33mb2af205[m updated to bcrypt to bcryptjs
+[33m8c92ba7[m updated to bcrypt to bcryptjs
+[33mf1b2895[m updated to bcrypt to bcryptjs
+[33mad7c086[m updated to bcrypt to bcryptjs
+[33m9fcbaeb[m Updated about page or other changes
+[33mf38468b[m vercel.json added
+[33med48c23[m first commit

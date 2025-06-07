@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate, useLocation, Link } from "react-router-dom";
 import loginImg from '../assets/images.png';
+
 
 
 export const Login = () => {
@@ -10,12 +11,12 @@ export const Login = () => {
         password: ""
     });
     const location = useLocation();
-  useEffect(() => {
-  const params = new URLSearchParams(location.search);
-  if (params.get("verified") === "true") {
-    alert("Email verified! Please log in.");
-  }
-}, []);
+    useEffect(() => {
+        const params = new URLSearchParams(location.search);
+        if (params.get("verified") === "true") {
+            alert("Email verified! Please log in.");
+        }
+    }, []);
 
     const navigate = useNavigate();
 
@@ -39,6 +40,7 @@ export const Login = () => {
                 },
                 body: JSON.stringify(user)
             })
+            const data = await response.json();
             if (response.ok) {
                 setUser({
                     email: "",
@@ -48,7 +50,7 @@ export const Login = () => {
                 navigate("/");
             }
             else {
-                alert("Invalid credential")
+                alert(data.msg || "Invalid credintials !");
             }
             console.log(response);
         } catch (error) {
@@ -78,6 +80,11 @@ export const Login = () => {
                                 <input type="password" name="password" placeholder="Enter password" id="password" required value={user.password} onChange={handleInput} />
                             </div><br />
                             <button type="submit" className="btn btn-submit">Register Now</button>
+                            <p>
+                                Forgot password?{" "}
+                                <Link to="/forgot-password">Reset here</Link>
+                            </p>
+
 
                         </form>
 
