@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Home } from "./pages/Home";
 import { Contact } from "./pages/Contact";
 import { About } from "./pages/About";
-import { Blogs } from "./pages/Blogs/blogs";
+import { Blogs } from "./pages/Blogs/Blogs";
 import { Login } from "./pages/Login";
 import { Register } from "./pages/Register";
 import { Navbar } from "./components/Navbar";
