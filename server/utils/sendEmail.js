@@ -1,6 +1,6 @@
 const nodemailer = require("nodemailer");
 
-const sendEmail = async (to, token, subject, message,Url) => {
+const sendEmail = async (to,subject, message,Url) => {
   try {
     const transporter = nodemailer.createTransport({
       service: "Gmail",
@@ -17,7 +17,7 @@ const sendEmail = async (to, token, subject, message,Url) => {
     const mailOptions = {
       from: process.env.USER,
       to: to,
-      subject: "test",
+      subject:subject,
       html: `<h2>Welcome to Our App </h2>
       <p>Please verify your email for ${message}</p>
       <a href="${Url}" style="color:blue;">Verify Email</a>

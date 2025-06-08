@@ -45,9 +45,9 @@ const register = async (req, res) => {
 
     await newUser.save();
     try {
-          const verificationUrl = `${process.env.CLIENT_URL}/verify/${token}`;
+          const verificationUrl = `${process.env.CLIENT_URL}/verify/${verifyToken}`;
 
-      await sendEmail(email, verifyToken, "Verify your account", "Account Registration",verificationUrl);
+      await sendEmail(email,"Verify your account", "Account Registration",verificationUrl);
       return res.status(200).json({ message: "Verification email sent!" });
     } catch (err) {
       console.error("Email send failed:", err.message);
@@ -139,7 +139,6 @@ const forgotPassword = async (req, res) => {
 
     await sendEmail(
       email,
-      token,
       "Password Reset",
       "Click the link to reset your password:",
       resetURL
