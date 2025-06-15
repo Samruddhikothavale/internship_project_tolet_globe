@@ -61,11 +61,11 @@ export const Contact = () => {
     }
     return (
         <>
-            <section className="section-contact">
+            <section className="section-contact bg-black py-10 px-5 sm:px-10 lg:px-20 text-white">
                 <h1 className="main-heading">Contact us</h1>
                 <div className="container contact-content ">
 
-                    <div>
+               
                         <div className="container grid grid-two-cols">
                             <div className="contact-img">
                                 <img src={contactImg} alt="" srcset="" width={500} height={300} />
@@ -93,7 +93,8 @@ export const Contact = () => {
 
                                 </div>
                             </div>
-                            <section className="section-form">
+                            <div>
+                                <section className="section-form">
                                 <form onSubmit={handleSubmit}>
                                     <div>
                                         <label htmlFor="subject">subject</label>
@@ -118,8 +119,9 @@ export const Contact = () => {
                                     <button type="submit" className="btn btn-submit">Submit</button>
                                 </form>
                             </section>
+                            </div>
                         </div>
-                    </div>
+                   
 
                 </div>
             </section>

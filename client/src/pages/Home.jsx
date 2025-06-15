@@ -54,7 +54,7 @@ export const Home = () => {
       }
   return (
     <>
-      <main>
+      <main className="bg-black py-10 px-5 sm:px-10 lg:px-20 text-white">
         <section className="section-analytics">
           <div className="container grid grid-two-cols">
             <div className="hero-content">
@@ -76,7 +76,7 @@ export const Home = () => {
         </section>
 
       </main>
-      <section className="section-analytics">
+      <section className="section-analytics bg-black py-10 px-5 sm:px-10 lg:px-20 text-white">
         <div className="container grid grid-two-cols">
           <div className="hero-image">
             <img src="" alt="hero" width="500" height="500" />

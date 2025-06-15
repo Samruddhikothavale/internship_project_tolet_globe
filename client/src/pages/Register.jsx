@@ -9,7 +9,7 @@ export const Register = () => {
     phone: "",
     password: "",
     role: "",
-    userType: "", // Only applicable if role === "user"
+    userType: "",
   });
 
   const [loading, setLoading] = useState(false);
@@ -25,8 +25,8 @@ export const Register = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log("Payload sent to backend:", user);
 
-    // Extra validation for userType if role is "user"
     if (user.role === "user" && !user.userType) {
       alert("Please select a user type (Buyer, Tenant, or Owner)");
       return;
@@ -34,13 +34,15 @@ export const Register = () => {
 
     setLoading(true);
     try {
+      console.log(JSON.stringify(user, null, 2));
       const response = await fetch(`${import.meta.env.VITE_BASE_API}/auth/register`, {
         method: "POST",
         headers: {
-          'Content-Type': "application/json"
+          'Content-Type': "application/json",
         },
-        body: JSON.stringify(user)
+        body: JSON.stringify(user),
       });
+      
 
       const data = await response.json();
 
@@ -56,6 +58,7 @@ export const Register = () => {
           role: "",
           userType: "",
         });
+        console.log(user);
         setLoading(false);
         navigate("/login");
       } else {
@@ -71,7 +74,7 @@ export const Register = () => {
 
   return (
     <section>
-      <div className="section-register">
+      <div className="section-register bg-black py-10 px-5 sm:px-10 lg:px-20 text-white">
         <div className="container grid grid-two-cols">
           <div className="register-img">
             <img src={registerImg} width="500" height="500" />
@@ -106,25 +109,23 @@ export const Register = () => {
                 <input type="password" name="password" required placeholder="Enter password" value={user.password} onChange={handleInput} />
               </div>
 
-              {/* Role Selector */}
               <div>
                 <label htmlFor="role">Role</label>
-                <select name="role" required value={user.role} onChange={handleInput}>
+                <select name="role" id="role" required value={user.role} onChange={handleInput}>
                   <option value="" disabled>Select Role</option>
-                  <option value="admin">Admin</option>
-                  <option value="content creator">Content Creator</option>
+                  <option value="admin">admin</option>
+                  <option value="content creator">content creator</option>
                   <option value="user">User (Buyer, Tenant, Owner)</option>
                 </select>
               </div>
 
-              {/* User Type Selector */}
               {user.role === "user" && (
                 <div>
                   <label htmlFor="userType">User Type</label>
                   <select name="userType" required value={user.userType} onChange={handleInput}>
                     <option value="" disabled>Select User Type</option>
-                    <option value="buyer">Buyer</option>
-                    <option value="tenant">Tenant</option>
+                    <option value="buyer">buyer</option>
+                    <option value="tenant">tenant</option>
                     <option value="owner">Owner</option>
                   </select>
                 </div>

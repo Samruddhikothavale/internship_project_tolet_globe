@@ -20,15 +20,15 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  role: {
+   role: {
     type: String,
-    enum: ["admin", "content creator", "user"], // user = buyer/tenant/owner
+    enum: ["admin", "content creator", "user"],
     default: "user",
     required: true,
   },
   userType: {
     type: String,
-    enum: ["buyer", "tenant", "owner", ""], // only for role=user
+    enum: ["buyer", "tenant", "owner",""],
     default: "",
   },
   isAdmin: {

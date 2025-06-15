@@ -23,6 +23,18 @@ const signUpSchema = z.object({
     .trim()
     .min(6, { message: "Password must be at least 6 characters" })
     .max(20, { message: "Password must not exceed 20 characters" }),
+
+   role: z.enum(["admin", "user", "content creator"], {
+      required_error: "Role is required",
+    }),
+
+    userType: z
+      .string()
+      .trim()
+      .refine(
+        (val) => ["buyer", "tenant", "owner", ""].includes(val || ""),
+        { message: "Invalid userType" }
+      ),
 });
 
 module.exports = signUpSchema;

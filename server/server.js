@@ -21,8 +21,10 @@ var corsOptions = {
   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
 }
 app.use(cors(corsOptions));
-app.use(express.json({ limit: '10mb' }));
-app.use(express.urlencoded({ extended: true, limit: '10mb' }));
+app.use(express.json({ limit: "10mb" })); 
+app.use(express.urlencoded({ extended: true }));
+
+
 
 app.get("/", (req, res) => {
   res.send("Welcome to the ToLet Globe API!");

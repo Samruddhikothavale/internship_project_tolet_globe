@@ -16,7 +16,7 @@ export const ForgotPassword = () => {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="bg-black py-10 px-5 sm:px-10 lg:px-20 text-white">
             <h2>Forgot Password</h2>
             <input
                 type="email"

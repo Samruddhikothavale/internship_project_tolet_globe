@@ -20,13 +20,14 @@ const home = async (req, res) => {
 
 const register = async (req, res) => {
   try {
-    const { username, email, phone, password, role, userType } = req.body;
-    console.log(req.body);
+    const { username, email, phone, password,role,userType } = req.body;
+    console.log("BODY RECEIVED ➜", req.body); 
 
     const userExist = await User.findOne({ email });
     if (userExist) {
       return res.status(400).json({ msg: "Email already exists" });
     }
+    
 
     const verifyToken = crypto.randomBytes(32).toString("hex");
 

@@ -62,7 +62,7 @@ export const Login = () => {
 
     return <>
         <section>
-            <div className="section-register">
+            <div className="section-register bg-black py-10 px-5 sm:px-10 lg:px-20 text-white">
                 <div className="container grid grid-two-cols">
                     <div className="register-img">
                         <img src={loginImg} alt="" width={500} height={500} />
