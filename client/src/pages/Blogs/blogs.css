@@ -11,3 +11,13 @@
     border: 0;
     border-radius: 5px;
 }
+.grid {
+  display: grid;
+  gap: 2rem;
+  
+}
+
+.grid-three-cols {
+  grid-template-columns: repeat(3, 1fr);
+
+}

@@ -111,11 +111,13 @@ const login = async (req, res) => {
 
     const isMatch = await userExist.comparePassword(password);
     if (!isMatch) return res.status(401).json({ msg: "Invalid email or password" });
-
+    
     res.status(200).json({
       msg: "Login successful",
       token: await userExist.generateToken(),
       userID: userExist._id.toString(),
+      role:userExist.role,
+      username:userExist.username,
     });
   } catch (error) {
     console.error("Login error:", error);

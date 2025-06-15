@@ -6,7 +6,7 @@ const authRouter =require("./router/auth-router");
 const contactRouter =require("./router/contact-router");
 const connectdb = require("./utils/db");
 const errormiddleware = require("./middelware/errorhandler_middelware");
-
+const blogRouter = require("./router/blog");
 //const CLIENT_URL = process.env.CLIENT_URL;
 
 
@@ -21,14 +21,15 @@ var corsOptions = {
   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
 }
 app.use(cors(corsOptions));
-app.use(express.json());
+app.use(express.json({ limit: '10mb' }));
+app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 
 app.get("/", (req, res) => {
   res.send("Welcome to the ToLet Globe API!");
 });
 app.use("/api/auth" , authRouter);
 app.use("/api/form" , contactRouter);
-
+app.use("/api/auth" , blogRouter);
 
 
 // app.get("/",(req,res)=>{

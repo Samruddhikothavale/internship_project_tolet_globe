@@ -47,8 +47,10 @@ export const Login = () => {
                     password: "",
                 })
                 alert("Login Successful")
-                navigate("/");
-            }
+                localStorage.setItem("user", JSON.stringify(data));
+                
+                navigate("/dashboard");
+            }   
             else {
                 alert(data.msg || "Invalid credintials !");
             }
