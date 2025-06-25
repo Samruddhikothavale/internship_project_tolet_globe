@@ -19,7 +19,7 @@ import { LikedBlogs } from "./pages/dashboard/LikedBlogs";
 import { AddBlog } from "./pages/Blogs/components/AddBlog";
 import { Logout } from "./pages/dashboard/Logout";
 import { Property } from "./pages/property/Property";
-import { ViweProperty } from "./pages/property/viweproperty";
+import { ViweProperty } from "./pages/property/ViweProperty";
 import { AddProperty } from "./pages/property/components/AddProperty";
 export default function App() {
   return (
