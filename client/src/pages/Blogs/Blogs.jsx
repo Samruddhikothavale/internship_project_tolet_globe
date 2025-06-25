@@ -13,7 +13,7 @@ export const Blogs = () => {
   useEffect(()=>{
     const fetchBlogs  = async () => {
       const res = await fetch(`${import.meta.env.VITE_BASE_API}/auth/fetchAllBlogs`);
-       const json = await res.json();          // { blogs: [...] }
+       const json = await res.json();          
       setdata(json.blogs || []);
     }
     fetchBlogs ();

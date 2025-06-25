@@ -27,7 +27,7 @@ export const AddBlog = () => {
     const { name, value, files } = e.target;
 
     if (files && files[0]) {
-      setFormData(prev => ({ ...prev, image: files[0] })); // raw File
+      setFormData(prev => ({ ...prev, image: files[0] })); 
     } else {
       setFormData(prev => ({ ...prev, [name]: value }));
     }
@@ -98,11 +98,11 @@ export const AddBlog = () => {
 
         <input
           type="text"
-          name="author"                    // ← fixed typo
+          name="author"            
           placeholder="Author"
           value={formData.author}
           onChange={handleChange}
-          readOnly                           // we already fill it
+          readOnly                         
           className="w-full p-2 border border-gray-300 rounded"
         />
 

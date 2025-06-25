@@ -9,6 +9,7 @@ export const Sidebar = () => {
     { to: "/changepassword", label: "Change Password" },
     { to: "/likedblog", label: "Liked Blog" },
     { to: "/addblog", label: "Add Blog" },
+    { to: "/addproperty", label: "Add Property" },
     { to: "/logout", label: "Logout" },
   ];
 

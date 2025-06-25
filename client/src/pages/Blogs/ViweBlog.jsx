@@ -33,7 +33,7 @@ export const ViweBlog = () => {
                 {
                     method: "PUT",
                     headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ liked: !liked }), // send intent
+                    body: JSON.stringify({ liked: !liked }), 
                 }
             );
             const data = await res.json();

@@ -7,6 +7,7 @@ const contactRouter =require("./router/contact-router");
 const connectdb = require("./utils/db");
 const errormiddleware = require("./middelware/errorhandler_middelware");
 const blogRouter = require("./router/blog");
+const propertyRouter =require("./router/property-router");
 //const CLIENT_URL = process.env.CLIENT_URL;
 
 
@@ -32,11 +33,9 @@ app.get("/", (req, res) => {
 app.use("/api/auth" , authRouter);
 app.use("/api/form" , contactRouter);
 app.use("/api/auth" , blogRouter);
+app.use("/api/property" , propertyRouter);
 
 
-// app.get("/",(req,res)=>{
-//     res.status(200).send('Welcome to pet shop');
-// });
 app.use(errormiddleware);
 
 const PORT = process.env.PORT || 8000;
